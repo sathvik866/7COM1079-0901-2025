@@ -328,3 +328,69 @@ df_mean <- df[, c("confirmed", "group")]
 # Convert confirmed to numeric and remove missing
 df_mean$confirmed <- as.numeric(df_mean$confirmed)
 df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Distribution of Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE = Cluster, FALSE = Non-Cluster)",
+ylab = "Number of Confirmed Cases (Count)",
+ylim = c(0, 120),
+col = c("#66b2ff", "#ff9999"),   # blue and soft red
+border = "black")
+#Wilcox Test
+wilcox.test(confirmed ~ group, data = df_mean)
+summary_table <- aggregate(confirmed ~ group, data = df_mean,
+FUN = function(x) c(mean = mean(x), median = median(x)))
+summary_table
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed[df_mean$confirmed < 500],
+main = "Histogram of Confirmed Cases (Values < 500)",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency",
+col = "lightgray",
+border = "black")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Distribution of Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE = Cluster, FALSE = Non-Cluster)",
+ylab = "Number of Confirmed Cases (Count)",
+ylim = c(0, 120),
+col = c("#66b2ff", "#ff9999"),   # blue and soft red
+border = "black")
+#Wilcox Test
+wilcox.test(confirmed ~ group, data = df_mean)
+summary_table <- aggregate(confirmed ~ group, data = df_mean,
+FUN = function(x) c(mean = mean(x), median = median(x)))
+summary_table
+# Install packages if not installed
+# install.packages("ggplot2")
+# install.packages("lubridate")
+library(ggplot2)
+library(lubridate)
+# Create dataframe for the Gantt chart
+timeline <- data.frame(
+Phase = c("Project Conception",
+"Literature Exploration",
+"Methodological Execution",
+"Analytical Review",
+"Documentation & Submission"),
+Start = as.Date(c("2025-11-21", "2025-11-24", "2025-11-27", "2025-11-30", "2025-12-03")),
+End   = as.Date(c("2025-11-24", "2025-11-27", "2025-11-30", "2025-12-03", "2025-12-05"))
+)
