@@ -158,3 +158,173 @@ df_prop$province <- factor(df_prop$province)
 df_prop$group <- factor(df_prop$group)
 # Contingency table of province by cluster status
 tab <- table(df_prop$province, df_prop$group)
+tab
+# Proportion stacked bar chart
+tab_prop <- prop.table(tab, margin = 1)
+barplot(tab_prop,
+main = "Proportion of Cluster vs Non-Cluster Cases by Province",
+xlab = "Province",
+ylab = "Proportion",
+legend = TRUE)
+# Chi-square test
+chisq.test(tab)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE/FALSE)",
+ylab = "Number of Confirmed Cases")
+wilcox.test(confirmed ~ group, data = df_mean)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE/FALSE)",
+ylab = "Number of Confirmed Cases",
+ylim = c(0, 500))
+wilcox.test(confirmed ~ group, data = df_mean)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE/FALSE)",
+ylab = "Number of Confirmed Cases",
+ylim = c(0, 120))
+wilcox.test(confirmed ~ group, data = df_mean)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Comparison of Mean Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE = Cluster, FALSE = Non-Cluster)",
+ylab = "Number of Confirmed Cases (Count)",
+ylim = c(0,120),
+notch = TRUE,
+col = c("lightgray", "darkgray"))
+wilcox.test(confirmed ~ group, data = df_mean)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Distribution of Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE = Cluster, FALSE = Non-Cluster)",
+ylab = "Number of Confirmed Cases (Count)",
+ylim = c(0, 120),
+border = "black",
+col = c("white", "white"))
+)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
+# Convert group into factor
+df_mean$group <- factor(df_mean$group)
+# Histogram of confirmed cases
+hist(df_mean$confirmed,
+main = "Histogram of Confirmed Cases",
+xlab = "Number of Confirmed Cases",
+ylab = "Frequency")
+# Shapiro test
+shapiro.test(df_mean$confirmed)
+boxplot(confirmed ~ group, data = df_mean,
+main = "Distribution of Confirmed Cases by Cluster Group",
+xlab = "Cluster Group (TRUE = Cluster, FALSE = Non-Cluster)",
+ylab = "Number of Confirmed Cases (Count)",
+ylim = c(0, 120),
+col = c("#66b2ff", "#ff9999"),   # blue and soft red
+border = "black")
+wilcox.test(confirmed ~ group, data = df_mean)
+# Load the dataset
+df <- read.csv("Case.csv", stringsAsFactors = FALSE)
+# Keep only confirmed and group
+df_mean <- df[, c("confirmed", "group")]
+# Convert confirmed to numeric and remove missing
+df_mean$confirmed <- as.numeric(df_mean$confirmed)
+df_mean <- na.omit(df_mean)
